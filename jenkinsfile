@@ -1,6 +1,6 @@
 node('Node1-JDK'){
     parameters { 
-    choice(name: 'BRANCH', choices: ['main','REL_INT_1.0'], description: 'branch') }
+    choice(name: 'BRANCH', default value: REL_INT_1.0, choices: ['main','REL_INT_1.0'], description: 'branch') }
     stage('vcs'){
         git branch: '${params.BRANCH}', url: 'https://github.com/yaminikor/spring-petclinic.git'
 
