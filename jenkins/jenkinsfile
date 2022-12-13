@@ -1,10 +1,12 @@
 pipeline{
+ parameters { 
+    choice(name: 'BRANCH', choices: ['main', 'REL_INT_1.0', ], description: 'branch') }
 
 stages{
     stage('vcs')
     {
         steps
-        git branch: 'REL_INT_1.0', url: 'https://github.com/yaminikor/spring-petclinic.git'
+        git branch: '$BRANCH', url: 'https://github.com/yaminikor/spring-petclinic.git'
     }
     }
     stages{
