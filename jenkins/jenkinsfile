@@ -1,10 +1,21 @@
-node('Node1-JDK'){
-    stage('vcs'){
-        git branch: 'REL_INT_1.0', 
-        url: 'https://github.com/yaminikor/spring-petclinic.git'
+pipeline{
 
+agent {
+    label 'Node1-JDK'
+}  
+stages{
+    stage('vcs')
+    {
+        steps
+        git branch: 'REL_INT_1.0', url: 'https://github.com/yaminikor/spring-petclinic.git'
     }
-    stage('build'){
-        sh('mvn package')
     }
-}
+    stages{
+        stage('build')
+{
+    sh 'mvn package'
+}    }
+    
+} 
+
+  
